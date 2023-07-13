@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		var user = userMapper.toEntity(signupDto);
-		user.setPassword(hashPassword(user.getPassword()));
+		//user.setPassword(hashPassword(user.getPassword()));
 		return userRepository.save(user);
 	}
 	
