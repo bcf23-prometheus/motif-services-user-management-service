@@ -138,20 +138,20 @@
         </rollingPolicy>
     </appender>
 
-<!--    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">-->
-<!--        <http>-->
-<!--            <url>http://localhost:3100/loki/api/v1/push</url>-->
-<!--        </http>-->
-<!--        <format>-->
-<!--            <label>-->
-<!--                <pattern>app=${SERVICE_NAME},host=${HOSTNAME},traceID=%X{traceId:-NONE},level=%level</pattern>-->
-<!--            </label>-->
-<!--            <message>-->
-<!--                <pattern>${FILE_LOG_PATTERN}</pattern>-->
-<!--            </message>-->
-<!--            <sortByTime>true</sortByTime>-->
-<!--        </format>-->
-<!--    </appender>-->
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <url>http://localhost:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <label>
+                <pattern>app=${SERVICE_NAME},host=${HOSTNAME},traceID=%X{traceId:-NONE},level=%level</pattern>
+            </label>
+            <message>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </message>
+            <sortByTime>true</sortByTime>
+        </format>
+    </appender>
 
     <logger name="errorLogger" level="ERROR" additivity="false">
         <appender-ref ref="ERROR_FILE_APPENDER"/>
@@ -159,7 +159,7 @@
 
     <logger name="traceLogger" level="TRACE" additivity="false">
         <appender-ref ref="TRACE_FILE_APPENDER"/>
-<!--        <appender-ref ref="LOKI"/>-->
+        <appender-ref ref="LOKI"/>
     </logger>
 
     <logger name="performanceLogger" level="TRACE" additivity="false">
