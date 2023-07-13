@@ -12,7 +12,7 @@ public class UserPrincipalDto {
 	
 	private String name;
 	private Date dob;
-	private String phone;
+	private String email;
 	private String nid;
 	private String birthCertificateId;
 	private UserRole userRole;

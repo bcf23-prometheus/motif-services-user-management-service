@@ -1,16 +1,19 @@
 -- liquibase formatted sql
 
 -- changeset surokkha:1689223150-1
-CREATE TABLE public."user"
-(
-    id                   VARCHAR(255) NOT NULL,
-    name                 VARCHAR(255) NOT NULL,
-    dob                  TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    email                VARCHAR(255) NOT NULL,
-    password             VARCHAR(255) NOT NULL,
-    nid                  VARCHAR(255),
-    birth_certificate_id VARCHAR(255),
-    user_role            VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_user PRIMARY KEY (id)
-);
+create
+extension if not exists "uuid-ossp";
 
+-- changeset surokkha:1689223150-2
+create table public."user"
+(
+    id                   varchar(255) not null,
+    name                 varchar(255) not null,
+    dob                  timestamp without time zone not null,
+    email                varchar(255) not null,
+    password             varchar(255) not null,
+    nid                  varchar(255),
+    birth_certificate_id varchar(255),
+    user_role            varchar(255) not null,
+    constraint pk_user primary key (id)
+);

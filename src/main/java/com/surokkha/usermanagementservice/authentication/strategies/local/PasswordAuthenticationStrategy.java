@@ -23,7 +23,7 @@ public class PasswordAuthenticationStrategy extends AuthenticationStrategy {
 	@Override
 	public User getAuthenticatedUser() {
 		var passwordAuthenticationDto = parseRequest();
-		var user = userService.getUser(passwordAuthenticationDto.getEmail());
+		var user = userService.getUserByEmail(passwordAuthenticationDto.getEmail());
 		if (userService.checkHashedPassword(user.getPassword(), passwordAuthenticationDto.getPassword())) {
 			return user;
 		}

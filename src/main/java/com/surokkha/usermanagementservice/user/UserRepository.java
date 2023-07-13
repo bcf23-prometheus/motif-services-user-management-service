@@ -14,4 +14,6 @@ public interface UserRepository extends JpaRepository<User, String>, JpaSpecific
 	
 	Optional<User> findByBirthCertificateId(String birthCertificateId);
 	
+	Optional<User> findByEmail(String email);
+	
 }

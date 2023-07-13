@@ -1,7 +1,9 @@
 package com.surokkha.usermanagementservice.user.dto;
 
 import com.surokkha.usermanagementservice.user.model.UserRole;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -15,12 +17,11 @@ public class SignupDto implements Serializable {
 	@Length (min = 3, max = 50)
 	private String name;
 	
-	@NotBlank
 	private Date dob;
 	
 	@NotBlank
-	@Length (min = 11, max = 11)
-	private String phone;
+	@Email
+	private String email;
 	
 	@Length (min = 10, max = 10)
 	private String nid;

@@ -3,6 +3,7 @@ package com.surokkha.usermanagementservice.user.model;
 import lombok.*;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 
@@ -19,7 +20,7 @@ public class User {
 	
 	@Id
 	@Column (nullable = false)
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.UUID)
 	private String id;
 	
 	@Column (nullable = false)

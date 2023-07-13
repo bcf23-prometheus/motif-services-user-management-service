@@ -42,6 +42,12 @@ public class UserServiceImpl implements UserService {
 		                     .orElseThrow(() -> new UserNotFoundException(id));
 	}
 	
+	@Override
+	public User getUserByEmail(String email) {
+		return userRepository.findByEmail(email)
+		                     .orElseThrow(() -> new UserNotFoundException(email));
+	}
+	
 	// FIXME: This is a temporary implementation. It should be replaced with a proper hashing algorithm.
 	private String hashPassword(String password) {
 		return password;

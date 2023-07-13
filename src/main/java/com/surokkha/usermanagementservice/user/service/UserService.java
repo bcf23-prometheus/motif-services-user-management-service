@@ -9,5 +9,7 @@ public interface UserService {
 	
 	User getUser(String id);
 	
+	User getUserByEmail(String email);
+	
 	boolean checkHashedPassword(String hashedPassword, String password);
 }
