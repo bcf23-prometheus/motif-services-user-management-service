@@ -19,6 +19,7 @@ ext {
     mapstructVersion = "1.5.5.Final"
     lombokMapstructBindingVersion = "0.2.0"
     openApiVersion = "2.1.0"
+    lokiLogbackVersion = "1.4.0"
 }
 
 
@@ -42,7 +43,7 @@ dependencies {
     implementation 'io.micrometer:micrometer-registry-prometheus'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
     implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
-    implementation 'com.github.loki4j:loki-logback-appender'
+    implementation "com.github.loki4j:loki-logback-appender:${lokiLogbackVersion}"
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

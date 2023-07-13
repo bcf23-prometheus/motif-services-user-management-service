@@ -1,6 +1,6 @@
 package com.surokkha.usermanagementservice.user.service;
 
-import com.surokkha.usermanagementservice.user.UserRepository;
+import com.surokkha.usermanagementservice.user.repository.UserRepository;
 import com.surokkha.usermanagementservice.user.dto.SignupDto;
 import com.surokkha.usermanagementservice.user.exception.BirthCertificatedIdAlreadyRegisteredException;
 import com.surokkha.usermanagementservice.user.exception.NidAlreadyRegisteredException;

@@ -1,22 +1,19 @@
-package com.surokkha.usermanagementservice.user;
+package com.surokkha.usermanagementservice.user.controller;
 
 import com.surokkha.domain.response.ApiResponse;
 import com.surokkha.usermanagementservice.authentication.AuthenticationStrategies;
-import com.surokkha.usermanagementservice.user.constants.UserMessages;
 import com.surokkha.usermanagementservice.user.dto.SignupDto;
 import com.surokkha.usermanagementservice.user.dto.UserDto;
 import com.surokkha.usermanagementservice.user.dto.UserPrincipalDto;
 import com.surokkha.usermanagementservice.user.mapper.UserMapper;
-import com.surokkha.usermanagementservice.user.model.User;
 import com.surokkha.usermanagementservice.user.service.UserService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -50,7 +47,11 @@ public class UserController {
 	@io.swagger.v3.oas.annotations.parameters.RequestBody (required = true,
 			content = @Content (mediaType = "application/json",
 					schema = @Schema (implementation = Map.class),
-					examples = @ExampleObject (value = "{\n" + "  \"email\": \"admin@lms.edu\",\n" + "  \"password\": \"12345678\"\n" + "}")))
+					examples = @ExampleObject (value = """
+							{
+							  "email": "admin@lms.edu",
+							  "password": "12345678"
+							}""")))
 	public UserPrincipalDto getUserPrincipal(HttpServletRequest request, @RequestParam String strategy) {
 		var user = AuthenticationStrategies.getAuthenticatedUser(strategy, request);
 		return userMapper.toPrincipalDto(user);

@@ -1,4 +1,4 @@
-package com.surokkha.usermanagementservice.user;
+package com.surokkha.usermanagementservice.user.repository;
 
 import com.surokkha.usermanagementservice.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
