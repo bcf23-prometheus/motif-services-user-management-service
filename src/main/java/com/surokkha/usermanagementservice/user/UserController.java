@@ -1,6 +1,8 @@
 package com.surokkha.usermanagementservice.user;
 
+import com.surokkha.domain.response.ApiResponse;
 import com.surokkha.usermanagementservice.authentication.AuthenticationStrategies;
+import com.surokkha.usermanagementservice.user.constants.UserMessages;
 import com.surokkha.usermanagementservice.user.dto.SignupDto;
 import com.surokkha.usermanagementservice.user.dto.UserDto;
 import com.surokkha.usermanagementservice.user.dto.UserPrincipalDto;
@@ -18,6 +20,8 @@ import jakarta.validation.Valid;
 
 import java.util.Map;
 
+import static com.surokkha.usermanagementservice.user.constants.UserMessages.USER_CREATED_SUCCESSFULLY;
+
 @RestController
 @RequestMapping ("/user")
 @RequiredArgsConstructor
@@ -27,8 +31,13 @@ public class UserController {
 	private final UserMapper userMapper;
 	
 	@PostMapping ("/signup")
-	public User signup(@Valid @RequestBody SignupDto signupDto) {
-		return userService.signUp(signupDto);
+	public ApiResponse<UserDto> signup(@Valid @RequestBody SignupDto signupDto) {
+		var user = userService.signUp(signupDto);
+		
+		return ApiResponse.<UserDto>builder()
+		                  .message(USER_CREATED_SUCCESSFULLY.getMessage())
+		                  .data(userMapper.toDto(user))
+		                  .build();
 	}
 	
 	@GetMapping ("/{id}")
