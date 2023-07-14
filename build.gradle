@@ -74,3 +74,7 @@ tasks.withType(JavaCompile).configureEach {
             '-Amapstruct.defaultComponentModel=spring'
     ]
 }
+
+bootJar {
+    archiveFileName = "user-management-service.jar"
+}
